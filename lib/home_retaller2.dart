@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:like_button/like_button.dart';
 
@@ -329,20 +327,86 @@ class _HomeretallerState extends State<Homeretaller> {
             ),
             InkWell(
               onTap: () {
-                showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return Container(
-                        height: 560,
-                        width: 335,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(100),
-                                topRight: Radius.circular(100))),
-                      );
-                    });
+                showModalBottomSheet<void>(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 50),
+                          height: 516,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30)),
+                              color: Colors.white,
+                              border: Border.all(width: 0.1)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 51),
+                          child: Container(
+                            height: 90,
+                            width: 292,
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Buy Through',
+                                  style:
+                                      GoogleFonts.kaushanScript(fontSize: 25),
+                                ),
+                                Spacer(),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 40,
+                                      width: 50,
+                                      child: Center(
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Homeretaller(),
+                                                ));
+                                          },
+                                          child: Text(
+                                            'X',
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffF4A39E),
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              bottomLeft: Radius.circular(20))),
+                                    ),
+                                    Container(
+                                      height: 55,
+                                      width: 270,
+                                      decoration:
+                                          BoxDecoration(border: Border.all()),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                color: Color(0xffFFF4D8),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    topRight: Radius.circular(30))),
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                );
               },
               child: Container(
                 height: 35,
